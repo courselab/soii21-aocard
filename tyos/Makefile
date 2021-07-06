@@ -1,14 +1,14 @@
 #  Makefile - Make script.
 # 
-#   Copyright (c) <YEAR>, <AUTHOR> 
+#   Copyright (c) 2021, Ariel O. Cardoso 
 #
 #   This piece of software is a derivative work of SYSeg, by Monaco F. J.
 #   SYSeg is distributed under the license GNU GPL v3, and is available
 #   at the official repository https://www.gitlab.com/monaco/syseg.
 #
-#   This file is part of <PROJECT>.
+#   This file is part of AOCard_tyos.
 #
-#   <PROJECT> is free software: you can redistribute it and/or modify
+#   AOCard_tyos is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
 #   the Free Software Foundation, either version 3 of the License, or
 #   (at your option) any later version.
@@ -42,7 +42,7 @@ stage2_obj = stage2.o core.o tyos.o
 
 # Size of stage2 in 512-byte sectors
 
-STAGE2_SIZE=1
+STAGE2_SIZE=5
 
 # Auxiliary variables to simplify this Makefile
 
@@ -94,7 +94,7 @@ $(all_obj) :%.o: %.s
 	as --32 $< -o $@
 
 $(all_obj:%.o=%.s) :%.s: %.c
-	gcc -m16 -O0 -I. -Wall -Wextra -fno-pic -fcf-protection=none  --freestanding -S $< -DSTAGE2_SIZE=$(STAGE2_SIZE) -o $@
+	gcc -m16 -O0 -I. -Wall -Wextra -fno-stack-protector -fno-pic -fcf-protection=none  --freestanding -S $< -DSTAGE2_SIZE=$(STAGE2_SIZE) -o $@
 
 $(stage1_obj:%.o=%.s) $(stage2_obj:%.o=%.s) : tyos.h
 

@@ -1,14 +1,14 @@
-/* <file> - <One-line note about this file>
+/* tyos.h - Header file used only by the stage 2 bootloader
  
-   Copyright (c) <YEAR>, <AUTHOR> 
+   Copyright (c) 2021, Ariel O. Cardoso 
 
    This piece of software is a derivative work of SYSeg, by Monaco F. J.
    SYSeg is distributed under the license GNU GPL v3, and is available
    at the official repository https://www.gitlab.com/monaco/syseg.
 
-   This file is part of <PROJECT>.
+   This file is part of AOCard_tyos.
 
-   <PROJECT> is free software: you can redistribute it and/or modify
+   AOCard_tyos is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
@@ -49,6 +49,11 @@ void __attribute__((naked, fastcall)) clear (void);
 /* Read standard input into buffer. */
 
 void __attribute__((naked, fastcall)) read (char *buffer);
+char __attribute__((naked, fastcall)) readchar ();
+
+/* Write char into buffer. */
+
+void __attribute__((fastcall, naked)) printchar (const char buffer);
 
 /* Prints a help message. */
 
@@ -64,7 +69,7 @@ int __attribute__((fastcall, naked)) compare (char *s1, char *s2);
 
 void load_stage2_block();
 
-#define PROMPT ">"
+#define PROMPT "> "
 
 /* Halt. */
 
@@ -73,5 +78,9 @@ void halt();
 /* Cursor shape-shifting function */
 
 void __attribute__((fastcall,naked)) cshape(char);
+
+/* Editor function */
+
+void __attribute__((fastcall)) edit();
 
 #endif

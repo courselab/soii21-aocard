@@ -1,14 +1,14 @@
-/* <file> - <One-line note about this file>
+/* mbr.c - Main program file
  
-   Copyright (c) <YEAR>, <AUTHOR> 
+   Copyright (c) 2021, Ariel O. Cardoso 
 
    This piece of software is a derivative work of SYSeg, by Monaco F. J.
    SYSeg is distributed under the license GNU GPL v3, and is available
    at the official repository https://www.gitlab.com/monaco/syseg.
 
-   This file is part of <PROJECT>.
+   This file is part of AOCard_mbr.
 
-   <PROJECT> is free software: you can redistribute it and/or modify
+   AOCard_mbr is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.

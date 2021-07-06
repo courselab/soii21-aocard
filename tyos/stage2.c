@@ -1,14 +1,14 @@
-/* <file> - <One-line note about this file>
+/* stage2.c - Source file for the second stage bootloader
  
-   Copyright (c) <YEAR>, <AUTHOR> 
+   Copyright (c) 2021, Ariel O. Cardoso 
 
    This piece of software is a derivative work of SYSeg, by Monaco F. J.
    SYSeg is distributed under the license GNU GPL v3, and is available
    at the official repository https://www.gitlab.com/monaco/syseg.
 
-   This file is part of <PROJECT>.
+   This file is part of AOCard_tyos.
 
-   <PROJECT> is free software: you can redistribute it and/or modify
+   AOCard_tyos is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
@@ -25,12 +25,12 @@
 
 #include <tyos.h>
 
-void __attribute__((naked)) init()
+void init()
 {
-  printnl ("Second stage loaded successfully.");
+	char b[5];
 
-  char b[5];
-	clear();
+	printnl ("Second stage loaded successfully.");
+
 	while(1)
 	{
 		print(PROMPT);
@@ -41,6 +41,8 @@ void __attribute__((naked)) init()
 			cshape(1);
 		else if(compare(b, "cshc"))
 			cshape(2);
+		else if(compare(b, "edit"))
+			edit();
 		else if(compare(b, "help"))
 			help();
 		else if(compare(b, "exit"))
@@ -53,7 +55,7 @@ void __attribute__((naked)) init()
 			print(b);
 			printnl(": command not found.");
 		}
-	}  
+	}
 
   halt();			/* Halt the system. */
 }
