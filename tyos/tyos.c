@@ -183,6 +183,9 @@ void __attribute__((fastcall)) edit()
 			case 1:
 				__asm__ volatile
 				(
+				"mov $0, %%bh;"
+				"mov $3, %%ah;"
+				"int $0x10;"
 				"sub $1, %%dh;"
 				"mov $0, %%bh;"
 				"mov $2, %%ah;"
@@ -190,11 +193,86 @@ void __attribute__((fastcall)) edit()
 					:::
 				);
 				break;
-			case 2: printnl("down pressed"); break;
-			case 3: printnl("left pressed"); break;
-			case 4: printnl("right pressed"); break;
-			case 5: printnl("enter pressed"); break;
-			case 6: printnl("backspace pressed"); break;
+			case 2:
+				__asm__ volatile
+				(
+				"mov $0, %%bh;"
+				"mov $3, %%ah;"
+				"int $0x10;"
+				"add $1, %%dh;"
+				"mov $0, %%bh;"
+				"mov $2, %%ah;"
+				"int $0x10;"
+				:::
+				);
+				break;
+			case 3:
+				__asm__ volatile
+				(
+				"mov $0, %%bh;"
+				"mov $3, %%ah;"
+				"int $0x10;"
+				"sub $1, %%dl;"
+				"mov $0, %%bh;"
+				"mov $2, %%ah;"
+				"int $0x10;"
+				:::
+				);
+				break;
+			case 4:
+				__asm__ volatile
+				(
+				"mov $0, %%bh;"
+				"mov $3, %%ah;"
+				"int $0x10;"
+				"add $1, %%dl;"
+				"mov $0, %%bh;"
+				"mov $2, %%ah;"
+				"int $0x10;"
+				:::
+				);
+				break;
+			case 5:
+				__asm__ volatile
+				(
+				"mov $0, %%bh;"
+				"mov $3, %%ah;"
+				"int $0x10;"
+				"add $1, %%dh;"
+				"mov $0, %%dl;"
+				"mov $0, %%bh;"
+				"mov $2, %%ah;"
+				"int $0x10;"
+				:::
+				);
+				break;
+			case 6:
+				__asm__ volatile
+				(
+				"mov $0, %%bh;"
+				"mov $3, %%ah;"
+				"int $0x10;"
+				"sub $1, %%dl;"
+				"mov $0, %%bh;"
+				"mov $2, %%ah;"
+				"int $0x10;"
+				"mov $' ', %%al;"
+				"mov $0x0e, %%ah;"
+				"int $0x10;"
+				"sub $1, %%dl;"
+				"mov $0, %%bh;"
+				"mov $2, %%ah;"
+				"int $0x10;"
+				"mov $' ', %%al;"
+				"mov $0x0e, %%ah;"
+				"int $0x10;"
+				"mov $2, %%ah;"
+				"int $0x10;"
+				"sub $1, %%dl;"
+				"mov $0, %%bh;"
+				:::
+				);
+				break;
 			default:
 				c[0]=b;
 				print(c);
