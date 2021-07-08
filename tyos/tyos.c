@@ -103,7 +103,7 @@ void __attribute__((naked)) help()
 		" cmp $8, %%al ;"
 		" je backspace%= ;"
 		"end%=:	;"
-		"	 int $0x10										;"
+		//"	 int $0x10										;"
 		"	 ret													;" /* Return from function						 */
 		// Key branches
 		"esc%=: ;"
@@ -259,17 +259,10 @@ void __attribute__((fastcall)) edit()
 				"mov $' ', %%al;"
 				"mov $0x0e, %%ah;"
 				"int $0x10;"
-				"sub $1, %%dl;"
+				//"sub $1, %%dl;" // For some reason, dl is already dl-1 at this point.
 				"mov $0, %%bh;"
 				"mov $2, %%ah;"
 				"int $0x10;"
-				"mov $' ', %%al;"
-				"mov $0x0e, %%ah;"
-				"int $0x10;"
-				"mov $2, %%ah;"
-				"int $0x10;"
-				"sub $1, %%dl;"
-				"mov $0, %%bh;"
 				:::
 				);
 				break;

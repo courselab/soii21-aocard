@@ -92,7 +92,7 @@ readchar:
 	.cfi_startproc
 #APP
 # 86 "tyos.c" 1
-		 movw $0X0, %ax							;	 int $0x16										; cmp $27, %al ; je esc60 ; cmp $0x48, %ah ; je up60 ; cmp $0x50, %ah ; je down60 ; cmp $0x4B, %ah ; je left60 ; cmp $0x4D, %ah ; je right60 ; cmp $13, %al ; je enter60 ; cmp $8, %al ; je backspace60 ;end60:	;	 int $0x10										;	 ret													;esc60: ; mov $0, %al ; jmp end60 ;up60: ; mov $1, %al ; jmp end60 ;down60: ; mov $2, %al ; jmp end60 ;left60: ; mov $3, %al ; jmp end60 ;right60: ; mov $4, %al ; jmp end60 ;enter60: ; mov $5, %al ; jmp end60 ;backspace60: ; mov $6, %al ; jmp end60 ;
+		 movw $0X0, %ax							;	 int $0x16										; cmp $27, %al ; je esc60 ; cmp $0x48, %ah ; je up60 ; cmp $0x50, %ah ; je down60 ; cmp $0x4B, %ah ; je left60 ; cmp $0x4D, %ah ; je right60 ; cmp $13, %al ; je enter60 ; cmp $8, %al ; je backspace60 ;end60:	;	 ret													;esc60: ; mov $0, %al ; jmp end60 ;up60: ; mov $1, %al ; jmp end60 ;down60: ; mov $2, %al ; jmp end60 ;left60: ; mov $3, %al ; jmp end60 ;right60: ; mov $4, %al ; jmp end60 ;enter60: ; mov $5, %al ; jmp end60 ;backspace60: ; mov $6, %al ; jmp end60 ;
 # 0 "" 2
 #NO_APP
 	nop
@@ -221,7 +221,7 @@ edit:
 .L12:
 #APP
 # 250 "tyos.c" 1
-	mov $0, %bh;mov $3, %ah;int $0x10;sub $1, %dl;mov $0, %bh;mov $2, %ah;int $0x10;mov $' ', %al;mov $0x0e, %ah;int $0x10;sub $1, %dl;mov $0, %bh;mov $2, %ah;int $0x10;mov $' ', %al;mov $0x0e, %ah;int $0x10;mov $2, %ah;int $0x10;sub $1, %dl;mov $0, %bh;
+	mov $0, %bh;mov $3, %ah;int $0x10;sub $1, %dl;mov $0, %bh;mov $2, %ah;int $0x10;mov $' ', %al;mov $0x0e, %ah;int $0x10;mov $0, %bh;mov $2, %ah;int $0x10;
 # 0 "" 2
 #NO_APP
 	jmp	.L10
@@ -251,7 +251,7 @@ compare:
 	movl	%edx, %edi
 	movl	%ebx, %esi
 #APP
-# 288 "tyos.c" 1
+# 281 "tyos.c" 1
 			mov %cx, %si		 ;		mov $5, %cx	 ;		mov $0x1, %ax		 ;		cld								;		repe	cmpsb				;		jecxz	equal			 ;		mov $0x0, %ax		 ;equal:								 ;		ret								;
 # 0 "" 2
 #NO_APP
@@ -280,7 +280,7 @@ halt:
 	movl	$nl, %ecx
 	call	print
 #APP
-# 313 "tyos.c" 1
+# 306 "tyos.c" 1
 	loop214:					 ;				hlt			 ;				jmp loop214;
 # 0 "" 2
 #NO_APP
