@@ -176,6 +176,8 @@ void __attribute__((fastcall)) edit()
 	c[1]='\0'; // DELTHIS
 	print("EDIT> ");
 	while(b!=7){
+		__asm__ volatile("mov $0xb800, %%eax;" :::);
+		__asm__ volatile("mov $97, (%%eax);" :::);
 		b=readchar();
 		switch(b)
 		{
