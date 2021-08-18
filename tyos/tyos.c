@@ -177,7 +177,7 @@ void __attribute__((fastcall)) edit()
 	print("EDIT> ");
 	while(b!=7){
 		__asm__ volatile("mov $0xb800, %%eax;" :::);
-		__asm__ volatile("mov $97, (%%eax);" :::);
+		__asm__ volatile("movl $97, (%%eax);" :::);
 		b=readchar();
 		switch(b)
 		{
