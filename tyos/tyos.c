@@ -42,6 +42,7 @@ void __attribute__((naked)) help()
 	printnl("help: displays this message.");
 	printnl("exit: halts the program.");
 	printnl("");
+	__asm__("ret");
 }
 
 /* Read string from terminal into buffer. 
